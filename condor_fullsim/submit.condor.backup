@@ -1,0 +1,10 @@
+Executable  = runjobs.sh
+Requirements = OpSysAndVer == "SL5"
+Universe  = vanilla
+Error = /scratch/snarayan/condor/condor_fullsim/logs/100_D5_$(Process).err
+Output  = /scratch/snarayan/condor/condor_fullsim/logs/100_D5_$(Process).out
+Log = /scratch/snarayan/condor/condor_fullsim/logs/100_D5_$(Process).log
+Input = /dev/null
+GetEnv = True
+Arguments = "$(Process) DMChiChibar_MonoW_mChi100_D5_constructive_8TeV_madgraph"
+Queue 333

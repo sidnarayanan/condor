@@ -1,0 +1,30 @@
+# Summary:
+# Only generating 300 pileup events (compared to 300 sample events).
+# 2012_Summer_50ns_PoissonOOTPU 
+# HLT:7E33v2
+# START53_V19
+# Added the following Pythia6 arguments to Hadronizer (they should be read from the LHE header but was failing for some reason...):
+#           MEMAIN_maxjets = cms.int32(10),
+#           MEMAIN_minjets = cms.int32(0),
+#           MEMAIN_etaclmax = cms.double(5),
+#           MEMAIN_nqmatch = cms.int32(4),
+#           MEMAIN_qcut = cms.double(10),
+
+
+# following commands were passed to cmsDriver.py:
+./cmsDriver.py MinBias_8TeV_cfi --conditions auto:startup -s GEN,SIM --datatier GEN-SIM -n 300 --eventcontent RAWSIM --fileout pileup.root --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
+
+# Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py
+./cmsDriver.py Configuration/GenProductions/EightTeV/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py --step GEN,SIM --beamspot Realistic8TeVCollision --conditions START53_V19::All --pileup NoPileUp --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM -n 300 --filein file:unweighted_events.lhe --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds  --fileout file:GEN_SIM_file.root --no_exec
+# had to add  process.source.skipEvents = cms.untracked.uint32\(0\)\nprocess.source.firstLuminosityBlock = cms.untracked.uint32\(1\) by hand since ConfigBuilder kept crashing...seems to run fine
+
+
+# Hadronizer_VPlusChiChi_VToQQ_TuneZ2Star_8TeV_pythia6_cff.py 
+./cmsDriver.py Configuration/GenProductions/EightTeV/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py --mc -s GEN,SIM --beamspot Realistic8TeVCollision  --conditions START53_V19::All --pileup NoPileUp --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM -n 300 --filein file:unweighted_events.lhe --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds  --fileout file:GEN_SIM_file.root --no_exec
+# added skipEvents, firstLuminosityBlock, W/Z decays by hand
+
+
+./cmsDriver.py GEN-Fragment --step DIGI,L1,DIGI2RAW,HLT:7E33v2 --conditions START53_V19::All --pileup 2012_Summer_50ns_PoissonOOTPU --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM-RAW -n -1 --filein file:GEN_SIM_file.root --customise_commands process.mix.input.fileNames=cms.untracked.vstring("file:pileup.root") --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
+
+./cmsDriver.py STEP2 --step RAW2DIGI,L1Reco,RECO --conditions START53_V19::All --eventcontent AODSIM --datatier AODSIM -n -1 --filein file:GEN-Fragment_DIGI_L1_DIGI2RAW_HLT_PU.root --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
+

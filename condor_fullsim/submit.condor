@@ -1,0 +1,11 @@
+Executable  = runjobs.sh
+Requirements = OpSysAndVer == "SL5" && ARCH == "X86_64"
+Universe  = vanilla
+Error = /scratch/snarayan/condor/condor_fullsim/logs/3000_Pseudoscalar_$(Process).err
+Output  = /scratch/snarayan/condor/condor_fullsim/logs/3000_Pseudoscalar_$(Process).out
+Log = /scratch/snarayan/condor/condor_fullsim/logs/3000_Pseudoscalar_$(Process).log
+Input = /dev/null
+GetEnv = True
+Arguments = "$(Process) DMChiChibar_MonoJet_mChi10_mMed3000_Pseudoscalar_8TeV_mcfm"
++AccountingGroup= "group_cmsuser.snarayan"
+Queue 167

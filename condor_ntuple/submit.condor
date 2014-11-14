@@ -1,0 +1,10 @@
+Executable  = run_flatntuples.sh
+Universe  = vanilla
+Error = /scratch/snarayan/condor_ntuple/logs/err.$(Process)
+Output  = /scratch/snarayan/condor_ntuple/logs/out.$(Process)
+Log = /scratch/snarayan/condor_ntuple/logs/log.$(Process)
+Input = /dev/null
+GetEnv = True
+Arguments = "$(Process)"
+
+Queue 34
