@@ -17,7 +17,7 @@ reco=STEP2_RAW2DIGI_L1Reco_RECO.py
 
 #careful to check that nevts * (number of jobs submitted in condor.submit - 1) < maxEvents
 #also check that nevts matches that in Hadronizer*py and MinBias*py
-nevts=300
+nevts=1000
 let val=$nproc*$nevts+1
 echo `hostname`
 echo "workdir: $workdir"
@@ -28,7 +28,7 @@ echo "val: $val"
 echo $scramdir
 cd ${scramdir}/src
 eval `scramv1 runtime -sh`
-eval `cmsenv`
+#eval `cmsenv`
 cd $workdir
 
 cp ${pythondir}/$minbias  .

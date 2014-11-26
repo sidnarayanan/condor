@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.381.2.28 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/PyReleaseValidation/python/ConfigBuilder.py,v 
-# with command line options: MinBias_8TeV_cfi --conditions auto:startup -s GEN,SIM --datatier GEN-SIM -n 300 --eventcontent RAWSIM --fileout pileup.root --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
+# with command line options: MinBias_8TeV_cfi --conditions auto:startup -s GEN,SIM --datatier GEN-SIM -n 1000 --eventcontent RAWSIM --fileout pileup.root --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('SIM')
@@ -24,7 +24,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(300)
+    input = cms.untracked.int32(1000)
 )
 
 # Input source
@@ -37,7 +37,7 @@ process.options = cms.untracked.PSet(
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
     version = cms.untracked.string('$Revision: 1.381.2.28 $'),
-    annotation = cms.untracked.string('MinBias_8TeV_cfi nevts:300'),
+    annotation = cms.untracked.string('MinBias_8TeV_cfi nevts:1000'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 

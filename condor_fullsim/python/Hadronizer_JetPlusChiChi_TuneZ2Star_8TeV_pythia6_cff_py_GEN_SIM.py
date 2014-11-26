@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.381.2.28 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/PyReleaseValidation/python/ConfigBuilder.py,v 
-# with command line options: Configuration/GenProductions/EightTeV/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py --mc -s GEN,SIM --beamspot Realistic8TeVCollision --conditions START53_V19::All --pileup NoPileUp --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM -n 300 --filein file:unweighted_events.lhe --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --fileout file:GEN_SIM_file.root --no_exec
+# with command line options: Configuration/GenProductions/EightTeV/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py --mc -s GEN,SIM --beamspot Realistic8TeVCollision --conditions START53_V19::All --pileup NoPileUp --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM -n 1000 --filein file:unweighted_events.lhe --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --fileout file:GEN_SIM_file.root --no_exec
 import FWCore.ParameterSet.Config as cms
 
 process = cms.Process('SIM')
@@ -25,7 +25,7 @@ process.load('Configuration.StandardSequences.EndOfProcess_cff')
 process.load('Configuration.StandardSequences.FrontierConditions_GlobalTag_cff')
 
 process.maxEvents = cms.untracked.PSet(
-    input = cms.untracked.int32(300)
+    input = cms.untracked.int32(1000)
 )
 
 # Input source
@@ -40,7 +40,7 @@ process.options = cms.untracked.PSet(
 # Production Info
 process.configurationMetadata = cms.untracked.PSet(
     version = cms.untracked.string('$Revision: 1.381.2.28 $'),
-    annotation = cms.untracked.string('Configuration/Generator/python/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py nevts:300'),
+    annotation = cms.untracked.string('Configuration/Generator/python/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py nevts:1000'),
     name = cms.untracked.string('PyReleaseValidation')
 )
 
