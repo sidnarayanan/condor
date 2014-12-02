@@ -17,7 +17,7 @@ reco=STEP2_RAW2DIGI_L1Reco_RECO.py
 
 #careful to check that nevts * (number of jobs submitted in condor.submit - 1) < maxEvents
 #also check that nevts matches that in Hadronizer*py and MinBias*py
-nevts=1000
+nevts=300
 let val=$nproc*$nevts+1
 echo `hostname`
 echo "workdir: $workdir"
@@ -41,7 +41,6 @@ cp ${pythondir}/$reco  .
 
 
 # grep $val Hadronizer_TuneZ2star_8TeV_madgraph_tauola_cff_py_GEN_SIM.py
-cat $minbias
 cmsRun $minbias
 cmsRun $hadronizer
 cmsRun $gen
