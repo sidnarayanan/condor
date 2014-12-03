@@ -3,14 +3,14 @@
 nproc=$1
 mname=$2
 outputDir=/mnt/hscratch/snarayan/mc/monoJet_Simplified/Fall14_DR53X/${mname}/AODSIM/Summer12-PU_START53_V19_v2/
-scramdir=/scratch/snarayan/condor/condor_fullsim/CMSSW_5_3_14/ 
-pythondir=${scramdir}/../python/
+scramdir=/scratch1/snarayan/condor/condor_fullsim/CMSSW_5_3_14/ 
+pythondir=${scramdir}../python/
 workdir=/condor/execute/dir_$PPID/ # this should work - the directory created is specified by the condor job PID
 #workdir=${PWD}/tmp # local testing
 lhePath=/mnt/hscratch/snarayan/mc/monoJet_Simplified/Fall14_DR53X/${mname}/events.lhe
-
+hostname
 minbias=MinBias_8TeV_cfi_GEN_SIM.py
-hadronizer=Hadronizer_JetPlusChiChi_TuneZ2Star_8TeV_pythia6_cff_py_GEN_SIM.py
+hadronizer=Hadronizer_VPlusChiChi_VToQQ_TuneZ2Star_8TeV_pythia6_cff_py_GEN_SIM.py
 gen=GEN-Fragment_DIGI_L1_DIGI2RAW_HLT_PU.py
 reco=STEP2_RAW2DIGI_L1Reco_RECO.py
 
@@ -28,7 +28,6 @@ echo "val: $val"
 echo $scramdir
 cd ${scramdir}/src
 eval `scramv1 runtime -sh`
-#eval `cmsenv`
 cd $workdir
 
 cp ${pythondir}/$minbias  .
@@ -41,6 +40,7 @@ cp ${pythondir}/$reco  .
 
 
 # grep $val Hadronizer_TuneZ2star_8TeV_madgraph_tauola_cff_py_GEN_SIM.py
+
 cmsRun $minbias
 cmsRun $hadronizer
 cmsRun $gen
