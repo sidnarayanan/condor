@@ -10,7 +10,7 @@ workdir=/condor/execute/dir_$PPID/ # this should work - the directory created is
 lhePath=/mnt/hscratch/snarayan/mc/monoJet_Simplified/Fall14_DR53X/${mname}/events.lhe
 hostname
 minbias=MinBias_8TeV_cfi_GEN_SIM.py
-hadronizer=Hadronizer_VPlusChiChi_VToQQ_TuneZ2Star_8TeV_pythia6_cff_py_GEN_SIM.py
+hadronizer=Hadronizer_JetPlusChiChi_TuneZ2Star_8TeV_pythia6_cff_py_GEN_SIM.py
 gen=GEN-Fragment_DIGI_L1_DIGI2RAW_HLT_PU.py
 reco=STEP2_RAW2DIGI_L1Reco_RECO.py
 
