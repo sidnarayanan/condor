@@ -5,6 +5,7 @@
 # with command line options: Configuration/GenProductions/EightTeV/Hadronizer_MgmMatchTuneZ2star_8TeV_madgraph_cff.py --mc -s GEN,SIM --beamspot Realistic8TeVCollision --conditions START53_V19::All --pileup NoPileUp --datamix NODATAMIXER --eventcontent RAWSIM --datatier GEN-SIM -n 300 --filein file:unweighted_events.lhe --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --fileout file:GEN_SIM_file.root --no_exec
 import FWCore.ParameterSet.Config as cms
 
+
 process = cms.Process('SIM')
 
 # import of standard configurations

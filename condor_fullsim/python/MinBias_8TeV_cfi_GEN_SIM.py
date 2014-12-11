@@ -5,6 +5,7 @@
 # with command line options: MinBias_8TeV_cfi --conditions auto:startup -s GEN,SIM --datatier GEN-SIM -n 300 --eventcontent RAWSIM --fileout pileup.root --customise Configuration/GenProductions/randomizeSeeds.randomizeSeeds --no_exec
 import FWCore.ParameterSet.Config as cms
 
+
 process = cms.Process('SIM')
 
 # import of standard configurations
