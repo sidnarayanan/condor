@@ -3,7 +3,7 @@
 mass=$1
 op=$2
 # interference=$3
-mgname="DMChiChibar_MonoJet_mChi10_mMed${mass}_${op}_8TeV_mcfm"
+mgname="DMChiChibar_MonoJet_mChi10_mMed${mass}_${op}_8TeV_1M_mcfm"
 
 echo "Executable  = runjobs.sh" > submit.condor
 echo 'Requirements = OpSysAndVer == "SL5" && ARCH == "X86_64"' >>submit.condor
@@ -15,7 +15,7 @@ echo 'Input = /dev/null' >> submit.condor
 echo 'GetEnv = True' >> submit.condor
 echo 'Arguments = "$(Process) '${mgname}'"' >> submit.condor
 echo '+AccountingGroup= "group_cmsuser.snarayan"' >> submit.condor
-echo 'Queue 167' >> submit.condor
+echo 'Queue 1000' >> submit.condor
 
 
 #condor_submit submit.condor

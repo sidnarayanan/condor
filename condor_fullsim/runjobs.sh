@@ -3,7 +3,7 @@
 nproc=$1
 mname=$2
 outputDir=/mnt/hscratch/snarayan/mc/monoJet_Simplified/Fall14_DR53X/${mname}/AODSIM/Summer12-PU_START53_V19_v2/
-scramdir=/scratch1/snarayan/condor/condor_fullsim/CMSSW_5_3_14/ 
+scramdir=/scratch/snarayan/condor/condor_fullsim/CMSSW_5_3_14/ 
 pythondir=${scramdir}../python/
 workdir=/condor/execute/dir_$PPID/ # this should work - the directory created is specified by the condor job PID
 #workdir=${PWD}/tmp # local testing
@@ -17,7 +17,7 @@ reco=STEP2_RAW2DIGI_L1Reco_RECO.py
 
 #careful to check that nevts * (number of jobs submitted in condor.submit - 1) < maxEvents
 #also check that nevts matches that in Hadronizer*py and MinBias*py
-nevts=300
+nevts=1000
 let val=$nproc*$nevts+1
 echo `hostname`
 echo "workdir: $workdir"
