@@ -8,6 +8,7 @@ nproc=$1
 #careful to check that nbatch * (number of jobs submitted in condor.submit - 1) < maxEvents
 nbatch=300
 let val=$nproc*$nbatch+1
+RECOPath = "/mnt/hscratch/snarayan/mc/monov_mg/constructive_-1/ChiChibarHadronicW_mChi100_D5_constructive/RECO_"${val}".root"
 indir=${indir}${val}"/"
 workdir=/condor/execute/dir_$PPID/
 echo `hostname`
@@ -23,7 +24,8 @@ cd $workdir
 pwd
 cp ${scramdir}/src/MitProd/Configuration/python/BAMBUProd_AODSIM.py .
 
-sed -i -e "33s/.*/   fileNames=cms.untracked.vstring('file:\/mnt\/hscratch\/snarayan\/mc\/monov_mg\/constructive_-1\/ChiChibarHadronicW_mChi100_D5_constructive\/RECO_"${val}".root')/" BAMBUProd_AODSIM.py
+sed -i -e 's?[\t\ ]*[^#]fileNames.*?\tfileNames = cms.untracked.vstring("file:'${RECOPath}'")?' BAMBUProd_AODSIM.py
+# sed -i -e "33s/.*/   fileNames=cms.untracked.vstring('file:\/mnt\/hscratch\/snarayan\/mc\/monov_mg\/constructive_-1\/ChiChibarHadronicW_mChi100_D5_constructive\/RECO_"${val}".root')/" BAMBUProd_AODSIM.py
 
 grep $val BAMBUProd_AODSIM.py
 

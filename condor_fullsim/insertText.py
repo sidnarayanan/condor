@@ -13,7 +13,7 @@ i=0
 write=stdout.write
 for l2 in f2.readlines():
     write(l2)
-    i+=1
     if i==nLines:
         for l1 in f1.readlines():
             write(l1)
+    i+=1

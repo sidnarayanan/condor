@@ -1,11 +1,11 @@
 Executable  = runjobs.sh
-Requirements = OpSysAndVer == "SL5" && ARCH == "X86_64"
+Requirements = OpSysAndVer == "SL6" && ARCH == "X86_64"
 Universe  = vanilla
-Error = /home/snarayan/scratch/condor/condor_fullsim/logs/3000_Vector_$(Process).err
-Output  = /home/snarayan/scratch/condor/condor_fullsim/logs/3000_Vector_$(Process).out
-Log = /home/snarayan/scratch/condor/condor_fullsim/logs/3000_Vector_$(Process).log
+Error = /home/snarayan/scratch/condor/condor_fullsim/logs/300_805_$(Process).err
+Output  = /home/snarayan/scratch/condor/condor_fullsim/logs/300_805_$(Process).out
+Log = /home/snarayan/scratch/condor/condor_fullsim/logs/300_805_$(Process).log
 Input = /dev/null
 GetEnv = True
-Arguments = "$(Process) DMChiChibar_MonoJet_mChi10_mMed3000_Vector_8TeV_1M_mcfm"
+Arguments = "$(Process) DMChiChibar_MonoJet_mChi10_mMed300_805_13TeV_mcfm"
 +AccountingGroup= "group_cmsuser.snarayan"
-Queue 1000
+Queue 35
